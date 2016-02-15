@@ -1,4 +1,4 @@
- import java.util.ArrayList;
+import java.util.ArrayList;
 
 /**
  * Store details of club memberships.
@@ -24,8 +24,7 @@ public class Club
      */
     public void join(Membership member)
     {
-        socios.add(member);
-        
+        socios.add(member);        
     }
 
     /**
@@ -35,5 +34,27 @@ public class Club
     public int numberOfMembers()
     {
         return socios.size();
+    }
+
+    /**
+     * Calcula el numero de socios que se dieron de alta en un mes determinado. 
+     * El año no nos importa. En caso de que el parametro contenga un valor no valido se muestra por pantalla el error.
+     * @param month El mes en el que estamos interesados
+     * @return El numero de socios que se dieron de alta dicho mes
+     */
+    public int joinedMonth(int month)
+    {
+        int altaSociosMes = 0;
+        if (month < 1 || month > 12) {
+            System.out.println("Los meses deben ir del 1 al 12");
+        }
+        else {
+            for (Membership miembro : socios) {
+                if (month == miembro.getMonth()) {
+                    altaSociosMes = altaSociosMes + 1;
+                }
+            }
+        }
+        return altaSociosMes;
     }
 }
